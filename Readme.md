@@ -1,5 +1,13 @@
 ## Beat maker
 
+A simple application thanks to which you will create your favorite beat.
+
+# Features
+- set your own tempo
+- start and stop playing
+- making your sounds path own
+
+
 #sounds urls:
 hihats:
 _______
