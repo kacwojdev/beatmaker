@@ -84,7 +84,7 @@ class DrumKit {
 
     mute(event) {
         const muteIndex = event.target.getAttribute('data-track');
-        event.target.classList.toggle('.active');
+        event.target.classList.toggle('active');
         if(event.target.classList.contains('active')) {
             switch(muteIndex) {
                 case "0":
@@ -140,13 +140,13 @@ drumKit.playBtn.addEventListener('click', () => {
 
 drumKit.selects.forEach(select => {
     select.addEventListener('change', (event) => {
-        drumKit.changeSound(event)
+        drumKit.changeSound(event);
     });
 })
 
 drumKit.muteBtns.forEach(btn => {
     btn.addEventListener('click', (event) => {
-        drumKit.muteBtns(event);
+        drumKit.mute(event);
     })
 })
 
