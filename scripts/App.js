@@ -13,6 +13,7 @@ class DrumKit {
         this.isPlaying = null;
         this.selects = document.querySelectorAll('select');
         this.muteBtns = document.querySelectorAll('.mute');
+        this.tempoSlider = document.querySelector('.tempo-slider');
     }
 
     activePad() {
@@ -104,6 +105,21 @@ class DrumKit {
             }
         }
     }
+
+    changeTempo(event) {
+        const tempoText = document.querySelector('.tempo-nr');
+        tempoText.innerText = event.target.value;
+    }
+
+    updateTempo(event) {
+        this.bpm = event.target.value;
+        clearInterval(this.isPlaying);
+        this.isPlaying = null;
+        const playBtn = document.querySelector('.play');
+        if(playBtn.classList.contains('active')) {
+            this.start();
+        }
+    }
 }
 
 const drumKit = new DrumKit();
@@ -116,6 +132,7 @@ drumKit.pads.forEach(pad => {
         this.style.animation = "";
     })
 })
+
 drumKit.playBtn.addEventListener('click', () => {
     drumKit.start();
     drumKit.updateBtn();
@@ -131,4 +148,12 @@ drumKit.muteBtns.forEach(btn => {
     btn.addEventListener('click', (event) => {
         drumKit.muteBtns(event);
     })
+})
+
+drumKit.tempoSlider.addEventListener('input', (event) => {
+    drumKit.changeTempo(event);
+})
+
+drumKit.tempoSlider.addEventListener('change', (event) => {
+    drumKit.updateTempo(event);
 })
